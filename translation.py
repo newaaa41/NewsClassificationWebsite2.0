@@ -1,5 +1,5 @@
 import requests
-from langdetect import detect
+
 
 
 def translate(key='', text='', lang='en'):

@@ -1,53 +1,35 @@
 {% extends "layout.html" %} {% block content %}
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.js"></script>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 <form action="index.html" class="box" method="post">
    <div class="form">
       <ul>
-         {%for cat, value in results%}
-         <h2 style="color:white;text-align: left;">{{ cat }}</h2>
-         <div
-            class="progress"
-            value="{{ value }}%"
-            id="{{ cat }}"
-            style=" display: flex;
-      align-items: center;
-      position: relative;
-      color: white;
-      width: 2%;
-      max-width: calc(100% - 1em);
-      background-color: #069;
-      border-radius: 1em;
-      padding: 5px;
-      font-size: 12px;
-      "
-         >
-            {{ value }}
-         </div>
-         {%endfor%}
+         <table class="t">
+            {%for cat, value in results%}
+            <tr class="tr">
+               <td class="td">
+                  <h2>
+                     {{ cat }}
+                     <span class="percent" id="p{{ loop.index }}"></span>
+                  </h2>
+               </td>
+            </tr>
+            <tr class="tr">
+               <td class="td" colspan="2">
+                  <div class="progress" id="bar{{ loop.index }}"></div>
+               </td>
+            </tr>
+            {%endfor%}
+         </table>
       </ul>
    </div>
 </form>
+
 <script>
-   myMove("entertainment");
-   myMove("business");
-   myMove("sport");
-   myMove("tech");
-   myMove("politics");
-   function myMove(x) {
-      var elem = document.getElementById(x);
-      var pos = 2;
-      var id = setInterval(frame, 20);
-      var value = elem.innerHTML;
-      console.log(value);
-      elem.innerHTML = elem.innerHTML + "%";
-      function frame() {
-         if (pos > Number(value)) {
-            clearInterval(id);
-         } else {
-            pos++;
-            elem.style.width = pos + "%";
-         }
-      }
-   }
+   {%for cat, value in results%}
+      bar1 = createBar(bar{{loop.index}},p{{ loop.index }});
+      bar1.animate({{value/100.0}});
+   {%endfor%}
 </script>
+
 {% endblock content %}

@@ -8,7 +8,7 @@ key = os.environ['google_api_key']
 
 class classifier():
 
-    def __init__(self, modelFile="model.bin", featuresFile="tfidf.bin"):
+    def __init__(self, modelFile="bin/model.bin", featuresFile="bin/tfidf.bin"):
         with open(modelFile, "rb") as f:
             self.model = pickle.load(f)
         with open(featuresFile, "rb") as f:

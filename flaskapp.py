@@ -22,6 +22,11 @@ def about():
     return render_template('help.html')
 
 
+@app.route("/sign")
+def sign():
+    return render_template('sign.html')
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     # note that we set the 404 status explicitly

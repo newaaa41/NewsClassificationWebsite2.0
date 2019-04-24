@@ -1,6 +1,7 @@
-from flask import Flask, render_template, url_for, flash, redirect, request
+from flask import Flask, render_template, url_for, flash, redirect, request, jsonify
 from classify import classifier
 from translation import translate
+
 
 model = classifier()
 
@@ -25,6 +26,11 @@ def about():
 @app.route("/sign")
 def sign():
     return render_template('sign.html')
+
+
+@app.route('/api/<string:text>', methods=['GET', 'POST'])
+def api(text):
+    return jsonify(dict(model.classify(text)))
 
 
 @app.errorhandler(404)

@@ -20,13 +20,13 @@ class classifier():
         x = ' '.join([word for word in stringClean(news).split()])
         x, lang = translate(key, x)
         if(lang != 'en'):
-            label = (" - ").join(self.lables)
-            label = translate(key, label, lang)[0]
+            label  = (" - ").join(self.lables)
+            label  = translate(key, label, lang)[0]
             labels = label.split("-")
         else:
             labels = self.lables
 
-        X = self.vect.transform([x])
+        X    = self.vect.transform([x])
         prob = self.model.predict_proba(X)
         prob = list(prob[0])
         for i in range(len(prob)):

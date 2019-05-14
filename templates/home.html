@@ -1,5 +1,4 @@
 {% extends "layout.html" %} {% block content %}
-<script src"https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.min.js"></script>
 <form action="#" class="box" method="post">
    <div class="form">
       <h3>Classify Text</h3>
@@ -10,7 +9,7 @@
          placeholder = "Paste news artical here to classify"
          required
          autocomplete = "off"
-         rows         = "15"
+         rows         = "8"
       ></textarea>
       <table align="center">
          <tr>
@@ -26,6 +25,7 @@
       </table>
    </div>
 </form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.min.js"></script>
 <script>
    autosize(document.querySelectorAll("textarea"));
 </script>

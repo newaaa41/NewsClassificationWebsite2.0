@@ -53,7 +53,7 @@ nav h1 {
    color        : white;
    resize       : none;
    text-align   : justify;
-   max-height   : 400px;
+   max-height   : 390px;
 }
 
 .box textarea:focus {
